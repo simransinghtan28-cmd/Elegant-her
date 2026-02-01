@@ -1,0 +1,102 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Elegant Her – International Fashion Store</title>
+  <style>
+    body { margin:0; font-family: Arial, Helvetica, sans-serif; background:#faf7f9; color:#333; }
+    header { display:flex; justify-content:space-between; align-items:center; padding:16px 32px; background:#f3dbe6; }
+    header h1 { margin:0; }
+    nav a { margin-left:20px; text-decoration:none; color:#333; font-weight:bold; }
+    .hero { padding:80px 20px; text-align:center; background:#fff; }
+    .hero h2 { font-size:42px; margin-bottom:10px; }
+    .hero p { font-size:18px; color:#666; }
+    .section { padding:40px 32px; max-width:1200px; margin:auto; }
+    .products { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px; }
+    .card { background:#fff; border-radius:8px; box-shadow:0 4px 10px rgba(0,0,0,0.05); overflow:hidden; }
+    .card img { width:100%; height:300px; object-fit:cover; }
+    .card h3 { margin:12px; }
+    .card p { margin:0 12px 12px; color:#777; }
+    .card button { margin:12px; width:calc(100% - 24px); padding:10px; border:none; background:#000; color:#fff; cursor:pointer; border-radius:4px; }
+    .cart { position:fixed; right:20px; bottom:20px; background:#000; color:#fff; padding:14px 20px; border-radius:30px; cursor:pointer; }
+    .checkout { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); justify-content:center; align-items:center; }
+    .checkout-box { background:#fff; padding:30px; border-radius:10px; width:100%; max-width:400px; }
+    .checkout-box h2 { margin-top:0; }
+    .checkout-box input { width:100%; padding:10px; margin-bottom:10px; }
+    .checkout-box button { width:100%; padding:12px; background:#000; color:#fff; border:none; }
+    footer { background:#f3dbe6; text-align:center; padding:20px; margin-top:40px; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Elegant Her</h1>
+  <nav>
+    <a href="#">Home</a>
+    <a href="#shop">Shop</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h2>Global Fashion for Modern Women</h2>
+  <p>Worldwide shipping • Secure international payments</p>
+</section>
+
+<section class="section" id="shop">
+  <h2>Shop Collection</h2>
+  <div class="products">
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1520974735194-6c3b7c4b0c84" />
+      <h3>Floral Summer Dress</h3>
+      <p>$49.00</p>
+      <button onclick="addToCart(49)">Add to Cart</button>
+    </div>
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab" />
+      <h3>Pastel Casual Top</h3>
+      <p>$29.00</p>
+      <button onclick="addToCart(29)">Add to Cart</button>
+    </div>
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2" />
+      <h3>Classic Blue Jeans</h3>
+      <p>$39.00</p>
+      <button onclick="addToCart(39)">Add to Cart</button>
+    </div>
+  </div>
+</section>
+
+<div class="cart" onclick="openCheckout()">🛒 Cart: $<span id="total">0</span></div>
+
+<div class="checkout" id="checkout">
+  <div class="checkout-box">
+    <h2>Checkout</h2>
+    <input placeholder="Full Name" />
+    <input placeholder="Email" />
+    <input placeholder="Address" />
+    <input placeholder="Country" />
+    <input placeholder="Postal Code" />
+    <button>Pay with Card (Stripe)</button>
+  </div>
+</div>
+
+<footer>
+  <p>© 2026 Elegant Her — International Fashion Store</p>
+</footer>
+
+<script>
+  let total = 0;
+  function addToCart(price) {
+    total += price;
+    document.getElementById('total').innerText = total;
+  }
+  function openCheckout() {
+    document.getElementById('checkout').style.display = 'flex';
+  }
+</script>
+
+</body>
+</html>
